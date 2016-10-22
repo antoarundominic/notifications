@@ -1,5 +1,5 @@
 var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
-
+(function ($) {
 window.Notification = function () {
 };
 Notification.prototype = {
@@ -70,3 +70,4 @@ Notification.prototype = {
 };
 window.notification = new Notification();
 console.log("window.notification", window.notification);
+}(jQuery));
