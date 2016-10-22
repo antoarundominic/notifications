@@ -1,4 +1,4 @@
-<?php header('Access-Control-Allow-Origin: freshfone.ngrok.io'); ?>
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script   src="notification.js"></script>
 <link rel="manifest" href="manifest.json">
