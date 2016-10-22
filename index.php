@@ -25,5 +25,7 @@ setTimeout(function() {
 
 </script>
 
+<?php header('Access-Control-Allow-Origin: freshfone.ngrok.io'); ?>
+
 
 <h3>Hello</h3>
