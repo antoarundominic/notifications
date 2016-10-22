@@ -21,9 +21,9 @@ Notification.prototype = {
       }).then(function(reg) {
         console.log('Service Worker is ready)', reg);
         reg.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
-          var mergedEndpoint = endpointWorkaround(subscription);
-          var deviceId = getDeviceId(mergedEndpoint);
-          registerDevice(deviceId);
+          var mergedEndpoint = this.endpointWorkaround(subscription);
+          var deviceId = this.getDeviceId(mergedEndpoint);
+          this.registerDevice(deviceId);
         });
       }).catch(function(err) {
         console.log('Service Worker error', err);
@@ -46,7 +46,7 @@ Notification.prototype = {
       return pushSubscription.endpoint;
     }
     var mergedEndpoint = pushSubscription.endpoint;
-    if  (isSubscriptionIdPresent()) {
+    if  (this.isSubscriptionIdPresent()) {
       mergedEndpoint = [pushSubscription.endpoint, '/', pushSubscription.subscriptionId].join('');
     }
     return mergedEndpoint;
