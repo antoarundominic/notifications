@@ -1,5 +1,6 @@
 
 <script   src="notification.js"></script>
+<link rel="manifest" href="manifest.json">
 
 <script type="text/javascript" defer>
 setTimeout(function() {
