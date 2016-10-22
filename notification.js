@@ -31,7 +31,10 @@ Notification.prototype = {
     }
   },
   registerDevice: function(deviceId) {
-    var userEmail = domHelper.getAgentEmail();
+    var userEmail = this.getAgentEmail();
+    if(userEmail === "") {
+      return;
+    }
     $.ajax({
       data: {email: userEmail, deviceId: deviceId},
       url: 'localhost:3000/device',
@@ -55,6 +58,14 @@ Notification.prototype = {
   isSubscriptionIdPresent: function(pushSubscription) {
     return (pushSubscription.subscriptionId &&
     pushSubscription.endpoint.indexOf(pushSubscription.subscriptionId) === -1);
+  },
+  getAgentEmail: function() {
+    var url = window.location.href;
+    var regex = new RegExp("[?&]email(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 };
 window.notification = new Notification();
