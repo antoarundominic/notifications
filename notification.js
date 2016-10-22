@@ -66,4 +66,4 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     });
   }
   loadServiceWorker();
-}) (jQuery);
+}(jQuery));
