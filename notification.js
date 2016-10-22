@@ -1,13 +1,7 @@
 var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
 
 (function($) {
-  return {
-    init: function() {
-    this.loadServiceWorker();
-    // subscribe();
-  },
-
-  loadServiceWorker: function() {
+  loadServiceWorker() {
     $.getScript( "https://github.com/jaga3421/helloruby/blob/master/sw.js" )
     .done(function( script, textStatus ) {
       console.log( textStatus );
@@ -17,8 +11,8 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
         $( "div.log" ).text( "Triggered ajaxError handler." );
     });
 
-  },
-  subscribe: function() {
+  }
+  subscribe() {
     if ('serviceWorker' in navigator) { 
       navigator.serviceWorker.register('sw.js').then(function() {
         return navigator.serviceWorker.ready;
@@ -33,9 +27,9 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
         console.log('Service Worker error', error);
       });
     }
-  },
+  }
 
-  endpointWorkaround: function(pushSubscription) {
+  endpointWorkaround(pushSubscription) {
     if (pushSubscription.endpoint.indexOf(GCM_ENDPOINT) !== 0) {
       return pushSubscription.endpoint;
     }
@@ -44,14 +38,14 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
       mergedEndpoint = [pushSubscription.endpoint, '/', pushSubscription.subscriptionId].join('');
     }
     return mergedEndpoint;
-  },
+  }
 
   isSubscriptionIdPresent(pushSubscription) {
     return (pushSubscription.subscriptionId &&
     pushSubscription.endpoint.indexOf(pushSubscription.subscriptionId) === -1);
-  },
+  }
 
-  getDeviceId: function(mergedEndpoint) {
+  getDeviceId(mergedEndpoint) {
     if (mergedEndpoint.indexOf(GCM_ENDPOINT) !== 0) {
       console.log('This browser isn\'t currently ' +
         'supported for this demo');
@@ -59,9 +53,9 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     }
     var endpointSections = mergedEndpoint.split('/');
     var subscriptionId = endpointSections[endpointSections.length - 1];
-  },
+  }
 
-  registerDevice: function(deviceId) {
+  registerDevice(deviceId) {
     var userEmail = domHelper.getAgentEmail();
     $.ajax({
       data: {email: userEmail, deviceId: deviceId},
@@ -70,7 +64,6 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
       dataType: 'json',
       success: function(data){console.log('Registered Successfully!'); }
     });
-  },
-  init()
   }
+  loadServiceWorker();
 }) (jQuery);
