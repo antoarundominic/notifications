@@ -46,7 +46,7 @@ Notification.prototype = {
       return pushSubscription.endpoint;
     }
     var mergedEndpoint = pushSubscription.endpoint;
-    if  (this.isSubscriptionIdPresent()) {
+    if  (this.isSubscriptionIdPresent(pushSubscription)) {
       mergedEndpoint = [pushSubscription.endpoint, '/', pushSubscription.subscriptionId].join('');
     }
     return mergedEndpoint;
