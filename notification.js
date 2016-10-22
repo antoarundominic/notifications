@@ -1,8 +1,8 @@
 var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
 
 (function($) {
-  loadServiceWorker() {
-    $.getScript( "https://github.com/jaga3421/helloruby/blob/master/sw.js" )
+  function loadServiceWorker() {
+    $.getScript( "https://freshminion.herokuapp.com/sw.js" )
     .done(function( script, textStatus ) {
       console.log( textStatus );
       this.subscribe();
@@ -12,7 +12,7 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     });
 
   }
-  subscribe() {
+  function subscribe() {
     if ('serviceWorker' in navigator) { 
       navigator.serviceWorker.register('sw.js').then(function() {
         return navigator.serviceWorker.ready;
@@ -29,7 +29,7 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     }
   }
 
-  endpointWorkaround(pushSubscription) {
+  function endpointWorkaround(pushSubscription) {
     if (pushSubscription.endpoint.indexOf(GCM_ENDPOINT) !== 0) {
       return pushSubscription.endpoint;
     }
@@ -40,12 +40,12 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     return mergedEndpoint;
   }
 
-  isSubscriptionIdPresent(pushSubscription) {
+  function isSubscriptionIdPresent(pushSubscription) {
     return (pushSubscription.subscriptionId &&
     pushSubscription.endpoint.indexOf(pushSubscription.subscriptionId) === -1);
   }
 
-  getDeviceId(mergedEndpoint) {
+  function getDeviceId(mergedEndpoint) {
     if (mergedEndpoint.indexOf(GCM_ENDPOINT) !== 0) {
       console.log('This browser isn\'t currently ' +
         'supported for this demo');
@@ -55,7 +55,7 @@ var GCM_ENDPOINT = 'https://android.googleapis.com/gcm/send';
     var subscriptionId = endpointSections[endpointSections.length - 1];
   }
 
-  registerDevice(deviceId) {
+  function registerDevice(deviceId) {
     var userEmail = domHelper.getAgentEmail();
     $.ajax({
       data: {email: userEmail, deviceId: deviceId},
