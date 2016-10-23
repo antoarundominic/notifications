@@ -42,6 +42,7 @@ Notification.prototype = {
     $.ajax({
       url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId+urlParams,
       dataType: 'jsonp',
+      jsonpCallback: "localJsonpCallback",
       success: function(data){console.log('Registered Successfully!'); }
     }).done(function() {
       console.log("Registered Successfully");
@@ -80,6 +81,9 @@ Notification.prototype = {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+  },
+  localJsonpCallback: function(data) {
+    console.log("localJsonpCallback", data);
   }
 };
 window.notification = new Notification();
