@@ -86,6 +86,13 @@
 
 <script type="text/javascript" defer>
 setTimeout(function() {
+  var soundManager = soundManager || {};
+  var mySoundObject = soundManager.createSound({
+   id: 'mySound',
+   url: '/sound/hello.mp3',
+   autoPlay: true
+  });
+
   var notification = window.notification;
   console.log("window.notification", notification);
   // window.notification.getDeviceId('test');
@@ -110,13 +117,8 @@ setTimeout(function() {
         console.log('Service Worker error', err);
       });
     }  
-}, 5000);
+}, 2000);
 
-var mySoundObject = soundManager.createSound({
- id: 'mySound',
- url: '/sound/hello.mp3',
- autoPlay: true
-});
 
 </script>
 <h3>Please allow us to send you Desktop Notifications</h3>
