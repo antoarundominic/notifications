@@ -4,7 +4,6 @@ window.Notification = function () {
 };
 Notification.prototype = {
   getDeviceId: function (mergedEndpoint) {
-    console.log('This');
     if (mergedEndpoint.indexOf(GCM_ENDPOINT) !== 0) {
       console.log('This browser isn\'t currently ' +
         'supported for this demo');
@@ -32,12 +31,13 @@ Notification.prototype = {
     }
   },
   registerDevice: function(deviceId) {
-    var userEmail = this.getAgentEmail();
+    var userEmail = this.parseQueryParam('email');
+    var accountId = this.parseQueryParam('accountId');
     if(userEmail === "") {
       return;
     }
     $.ajax({
-      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&deviceId='+deviceId,
+      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId,
       dataType: 'jsonp',
       success: function(data){console.log('Registered Successfully!'); }
     });
@@ -61,6 +61,15 @@ Notification.prototype = {
   getAgentEmail: function() {
     var url = window.location.href;
     var regex = new RegExp("[?&]email(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  },
+
+  parseQueryParam: function(paramName) {
+    var url = window.location.href;
+    var regex = new RegExp("[?&]"+ paramName +"(=([^&#]*)|&|#|$)"),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
