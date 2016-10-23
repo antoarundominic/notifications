@@ -36,10 +36,8 @@ Notification.prototype = {
       return;
     }
     $.ajax({
-      data: {email: userEmail, deviceId: deviceId},
-      url: 'localhost:3000/device',
-      method: 'POST',
-      dataType: 'json',
+      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&deviceId='+deviceId,
+      dataType: 'jsonp',
       success: function(data){console.log('Registered Successfully!'); }
     });
   },
