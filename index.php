@@ -86,12 +86,12 @@
 
 <script type="text/javascript" defer>
 setTimeout(function() {
-  var soundManager = soundManager || {};
-  var mySoundObject = soundManager.createSound({
-   id: 'mySound',
-   url: '/sound/hello.mp3',
-   autoPlay: true
-  });
+  // var soundManager = soundManager || {};
+  // var mySoundObject = soundManager.createSound({
+  //  id: 'mySound',
+  //  url: '/sound/hello.mp3',
+  //  autoPlay: true
+  // });
 
   var notification = window.notification;
   console.log("window.notification", notification);
