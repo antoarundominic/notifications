@@ -41,8 +41,7 @@ Notification.prototype = {
     var urlParams = ["&p256dh=", params.p256dh, "&auth=", params.auth,"&userId=", userId].join('');
     $.ajax({
       url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId+urlParams,
-      dataType: 'jsonp',
-      jsonpCallback: "localJsonpCallback",
+      dataType: 'json',
       success: function(data){console.log('Registered Successfully!'); }
     }).done(function() {
       console.log("Registered Successfully");
