@@ -10,7 +10,6 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('push', function(event, payload) {
-  console.log('deviceUID', localStorage.getItem('deviceUID'));
   console.log('Push message', event);
   var title = 'Push message';
   localStorage.getItem("deviceUID");
