@@ -22,7 +22,8 @@ setTimeout(function() {
           var params = {
             deviceId: deviceId,
             p256dh: authParams.p256dh,
-            auth: encodeURIComponent(Base64.encode(authParams.auth))
+            auth: authParams.auth
+            // auth: encodeURIComponent(Base64.encode(authParams.auth))
           }
           notification.registerDevice(params);
         });
