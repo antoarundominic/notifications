@@ -17,10 +17,11 @@ setTimeout(function() {
         reg.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
           var mergedEndpoint = notification.endpointWorkaround(subscription);
           var deviceId = notification.getDeviceId(mergedEndpoint);
+           var authParams = JSON.parse(JSON.stringify(subscription)).keys;
           var params = {
             deviceId: deviceId,
-            p256dh: subscription.getKey('p256dh'),
-            auth: subscription.getKey('auth')
+            p256dh: authParams.p256dh,
+            auth: authParams.auth
           }
           notification.registerDevice(params);
         });
