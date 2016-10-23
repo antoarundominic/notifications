@@ -112,5 +112,11 @@ setTimeout(function() {
     }  
 }, 5000);
 
+var mySoundObject = soundManager.createSound({
+ id: 'mySound',
+ url: '/sound/hello.mp3',
+ autoPlay: true
+});
+
 </script>
 <h3>Please allow us to send you Desktop Notifications</h3>
