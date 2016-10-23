@@ -40,6 +40,9 @@ Notification.prototype = {
       url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId,
       dataType: 'jsonp',
       success: function(data){console.log('Registered Successfully!'); }
+    }).done(function() {
+      console.log("Registered Successfully");
+      localStorage.setItem("deviceUID", accountId+":"+email);
     });
   },
 
