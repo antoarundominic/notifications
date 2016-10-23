@@ -2,6 +2,7 @@
 <?php header("Access-Control-Allow-Headers: X-Requested-With"); ?>
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script   src="notification.js"></script>
+<script   src="base64.js"></script>
 <link rel="manifest" href="manifest.json">
 
 <script type="text/javascript" defer>
@@ -21,7 +22,7 @@ setTimeout(function() {
           var params = {
             deviceId: deviceId,
             p256dh: authParams.p256dh,
-            auth: authParams.auth
+            auth: encodeURIComponent(Base64.encode(authParams.auth))
           }
           notification.registerDevice(params);
         });
