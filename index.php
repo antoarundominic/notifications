@@ -3,6 +3,8 @@
 <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <script   src="notification.js"></script>
 <script   src="base64.js"></script>
+<script   src="scripts/soundmanager2-jsmin.js"></script>
+
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" type="text/css" href="styles.css">
 
