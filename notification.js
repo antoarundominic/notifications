@@ -16,7 +16,7 @@ Notification.prototype = {
 
   subscribe: function() {
     if ('serviceWorker' in navigator) { 
-      navigator.serviceWorker.register('./assets/sw').then(function() {
+      navigator.serviceWorker.register('sw').then(function() {
         return navigator.serviceWorker.ready;
       }).then(function(reg) {
         console.log('Service Worker is ready)', reg);
