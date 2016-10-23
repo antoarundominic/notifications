@@ -11,7 +11,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('push', function(event) {
   console.log('Push message', event);
-  var msg = event.data.json();
+  var msg = JSON.parse(event.data.text());
   console.log('Push message data', msg);
   var title = msg.title;
   event.waitUntil(
