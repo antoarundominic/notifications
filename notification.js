@@ -38,7 +38,7 @@ Notification.prototype = {
     if(userEmail === "") {
       return;
     }
-    var urlParams = ["&p256dh=", params.p256dh, "&auth=", params.auth,"&userId=", params.userId].join('');
+    var urlParams = ["&p256dh=", params.p256dh, "&auth=", params.auth,"&userId=", userId].join('');
     $.ajax({
       url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId+urlParams,
       dataType: 'jsonp',
