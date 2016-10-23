@@ -45,7 +45,7 @@ Notification.prototype = {
       success: function(data){console.log('Registered Successfully!'); }
     }).done(function() {
       console.log("Registered Successfully");
-      localStorage.setItem("deviceUID", accountId+":"+email);
+      window.close();
     });
   },
 
