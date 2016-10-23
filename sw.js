@@ -11,11 +11,13 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('push', function(event) {
   console.log('Push message', event);
-  var title = 'Push message';
+  var msg = event.data.json();
+  console.log('Push message data', msg);
+  var title = msg.title;
   event.waitUntil(
 
     self.registration.showNotification(title, {
-      'body': 'The Message',
+      'body': msg.body,
       'icon': 'images/icon.png'
     }));
 });
