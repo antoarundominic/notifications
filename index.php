@@ -5,6 +5,20 @@
 <script   src="base64.js"></script>
 <link rel="manifest" href="manifest.json">
 
+<style>
+html {
+   background: #f2f2f2;
+   padding: 50px;
+}
+h3 {
+  color: #444;
+  font-family: Helvetica, sans-serif;
+}
+
+</style>
+
+
+
 <script type="text/javascript" defer>
 setTimeout(function() {
   var notification = window.notification;
@@ -34,4 +48,4 @@ setTimeout(function() {
 }, 5000);
 
 </script>
-<h3>Hello</h3>
+<h3>Please allow us to send you Desktop Notifications</h3>
