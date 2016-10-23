@@ -161,7 +161,7 @@ $white                   : #fff;
 /* css minion from https://codepen.io/ezecafre89/pen/ojnKb */
 .content {
      height: 400px;
-     transform: scale(.2);
+     transform: scale(.3);
      /*transform-origin: 18px 100%;*/
      transition: .2s cubic-bezier(0.42, 0, 0, 1.9);
      position: absolute;
