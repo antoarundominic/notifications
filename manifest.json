@@ -1,4 +1,7 @@
 {
-  "name": "minions-anto",
+  "name": "Minion",
+  "short_name": "Minion",
+  "start_url": "/",
+  "display": "standalone",
   "gcm_sender_id": "442204428005"
 }
