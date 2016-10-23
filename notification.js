@@ -12,6 +12,7 @@ Notification.prototype = {
     }
     var endpointSections = mergedEndpoint.split('/');
     var subscriptionId = endpointSections[endpointSections.length - 1];
+    return subscriptionId;
   },
 
   subscribe: function() {
