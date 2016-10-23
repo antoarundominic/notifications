@@ -4,7 +4,7 @@
 <script   src="notification.js"></script>
 <script   src="base64.js"></script>
 <link rel="manifest" href="manifest.json">
-
+<link rel="stylesheet" type="text/css" href="styles.css">
 
 <!-- Minion html start-->
 <section class="content" id="target">

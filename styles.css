@@ -165,7 +165,7 @@ $white                   : #fff;
      /*transform-origin: 18px 100%;*/
      transition: .2s cubic-bezier(0.42, 0, 0, 1.9);
      position: absolute;
-     top: -55px;
+     top: -75px;
      left: 10px;
 }
 
