@@ -4,6 +4,20 @@
 <script   src="notification.js"></script>
 <link rel="manifest" href="manifest.json">
 
+
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+      appId: "e3cfecf8-0f81-4391-8d57-967f9879c14e",
+      autoRegister: false,
+      notifyButton: {
+        enable: true /* Set to false to hide */
+      }
+    }]);
+  </script>
+
+  
 <script type="text/javascript" defer>
 setTimeout(function() {
   var notification = window.notification;
