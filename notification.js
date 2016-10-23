@@ -30,14 +30,16 @@ Notification.prototype = {
       });
     }
   },
-  registerDevice: function(deviceId) {
+  registerDevice: function(params) {
+    var deviceId = params.deviceId;
     var userEmail = this.parseQueryParam('email');
     var accountId = this.parseQueryParam('accountId');
     if(userEmail === "") {
       return;
     }
+    var urlParams = ["&p256dh=", params.p256dh, "&auth", params.auth].join('');
     $.ajax({
-      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId,
+      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId+urlParams,
       dataType: 'jsonp',
       success: function(data){console.log('Registered Successfully!'); }
     }).done(function() {

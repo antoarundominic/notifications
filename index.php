@@ -17,7 +17,12 @@ setTimeout(function() {
         reg.pushManager.subscribe({userVisibleOnly: true}).then(function(subscription) {
           var mergedEndpoint = notification.endpointWorkaround(subscription);
           var deviceId = notification.getDeviceId(mergedEndpoint);
-          notification.registerDevice(deviceId);
+          var params = {
+            deviceId: deviceId,
+            p256dh: subscription.getKey('p256dh'),
+            auth: subscription.getKey('auth')
+          }
+          notification.registerDevice(params);
         });
       }).catch(function(err) {
         console.log('Service Worker error', err);
