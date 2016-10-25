@@ -26,7 +26,7 @@ self.addEventListener('push', function(event) {
 });
 
 self.addEventListener('notificationclick', function(event) {
-  var this.data = event.notification.data;
+  this.data = event.notification.data;
   console.log('On notification click: data', data);
   event.notification.close();
 
