@@ -30,19 +30,22 @@ Notification.prototype = {
       });
     }
   },
-  registerDevice: function(deviceId) {
+  registerDevice: function(params) {
+    var deviceId = params.deviceId;
     var userEmail = this.parseQueryParam('email');
+    var userId = this.parseQueryParam('userId');
     var accountId = this.parseQueryParam('accountId');
     if(userEmail === "") {
       return;
     }
+    var urlParams = ["&p256dh=", params.p256dh, "&auth=", params.auth,"&userId=", userId].join('');
     $.ajax({
-      url: 'https://freshfone.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId,
-      dataType: 'jsonp',
+      url: 'https://sarathtry.ngrok.io/device?email='+userEmail+'&accountId='+accountId+'&deviceId='+deviceId+urlParams,
+      dataType: 'json',
       success: function(data){console.log('Registered Successfully!'); }
     }).done(function() {
       console.log("Registered Successfully");
-      localStorage.setItem("deviceUID", accountId+":"+email);
+      window.close();
     });
   },
 
@@ -77,6 +80,9 @@ Notification.prototype = {
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
+  },
+  localJsonpCallback: function(data) {
+    console.log("localJsonpCallback", data);
   }
 };
 window.notification = new Notification();
