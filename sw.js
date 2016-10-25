@@ -26,7 +26,7 @@ self.addEventListener('push', function(event) {
 });
 
 self.addEventListener('notificationclick', function(event) {
-  var data = event.notification.data;
+  var this.data = event.notification.data;
   console.log('On notification click: data', data);
   event.notification.close();
 
@@ -37,10 +37,10 @@ self.addEventListener('notificationclick', function(event) {
   }).then(function(clientList) {
     for (var i = 0; i < clientList.length; i++) {
       var client = clientList[i];
-      if (client.url == data.url && 'focus' in client)
+      if (client.url == self.data.url && 'focus' in client)
         return client.focus();
     }
     if (clients.openWindow)
-      return clients.openWindow(data.url);
+      return clients.openWindow(self.data.url);
   }));
 });
