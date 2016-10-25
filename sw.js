@@ -14,16 +14,20 @@ self.addEventListener('push', function(event) {
   var msg = JSON.parse(event.data.text());
   console.log('Push message data', msg);
   var title = msg.title;
+  var data = {'link': msg.url};
+  
   event.waitUntil(
 
     self.registration.showNotification(title, {
       'body': msg.body,
-      'icon': 'images/icon.jpg'
+      'icon': 'images/icon.jpg',
+       'data': data
     }));
 });
 
 self.addEventListener('notificationclick', function(event) {
-  console.log('On notification click: ', event.notification.tag);
+  var data = event.notification.data;
+  console.log('On notification click: data', data);
   event.notification.close();
 
   // This looks to see if the current is already open and
@@ -33,10 +37,10 @@ self.addEventListener('notificationclick', function(event) {
   }).then(function(clientList) {
     for (var i = 0; i < clientList.length; i++) {
       var client = clientList[i];
-      if (client.url == '/' && 'focus' in client)
+      if (client.url == data.url && 'focus' in client)
         return client.focus();
     }
     if (clients.openWindow)
-      return clients.openWindow('/');
+      return clients.openWindow(data.url);
   }));
 });
