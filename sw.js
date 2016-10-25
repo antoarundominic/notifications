@@ -18,7 +18,7 @@ self.addEventListener('push', function(event) {
 
     self.registration.showNotification(title, {
       'body': msg.body,
-      'icon': 'images/icon.png'
+      'icon': 'images/icon.jpg'
     }));
 });
 
