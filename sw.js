@@ -14,7 +14,7 @@ self.addEventListener('push', function(event) {
   var msg = JSON.parse(event.data.text());
   console.log('Push message data', msg);
   var title = msg.title;
-  var data = {'link': msg.url};
+  var data = {'url': msg.url};
   
   event.waitUntil(
 
