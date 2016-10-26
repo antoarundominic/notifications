@@ -20,7 +20,7 @@ self.addEventListener('push', function(event) {
 
     self.registration.showNotification(title, {
       'body': msg.body,
-      'icon': 'images/icon.jpg',
+      'icon': 'images/minions.png',
        'data': data
     }));
 });
